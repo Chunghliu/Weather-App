@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Weather-App.github.io/static/css/main.94583ce7.chunk.css",
+    "main.js": "/Weather-App.github.io/static/js/main.1abcaa0c.chunk.js",
+    "main.js.map": "/Weather-App.github.io/static/js/main.1abcaa0c.chunk.js.map",
+    "runtime-main.js": "/Weather-App.github.io/static/js/runtime-main.4cbffd84.js",
+    "runtime-main.js.map": "/Weather-App.github.io/static/js/runtime-main.4cbffd84.js.map",
+    "static/js/2.133ad154.chunk.js": "/Weather-App.github.io/static/js/2.133ad154.chunk.js",
+    "static/js/2.133ad154.chunk.js.map": "/Weather-App.github.io/static/js/2.133ad154.chunk.js.map",
+    "static/js/3.bcc04b63.chunk.js": "/Weather-App.github.io/static/js/3.bcc04b63.chunk.js",
+    "static/js/3.bcc04b63.chunk.js.map": "/Weather-App.github.io/static/js/3.bcc04b63.chunk.js.map",
+    "index.html": "/Weather-App.github.io/index.html",
+    "static/css/main.94583ce7.chunk.css.map": "/Weather-App.github.io/static/css/main.94583ce7.chunk.css.map",
+    "static/js/2.133ad154.chunk.js.LICENSE.txt": "/Weather-App.github.io/static/js/2.133ad154.chunk.js.LICENSE.txt",
+    "static/media/cog.64eda1d3.svg": "/Weather-App.github.io/static/media/cog.64eda1d3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4cbffd84.js",
+    "static/js/2.133ad154.chunk.js",
+    "static/css/main.94583ce7.chunk.css",
+    "static/js/main.1abcaa0c.chunk.js"
+  ]
+}
