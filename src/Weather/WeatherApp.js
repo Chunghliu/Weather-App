@@ -5,6 +5,7 @@ import { ThemeProvider } from '@emotion/react'
 import WeatherCard from './WeatherCard';
 import useWeatherApi from './useWeatherApi';
 import useWeatherSetting from './WeatherSetting';
+import ButtonTest from './ButtonTest';
 
 //定義主題配色
 const theme = {
@@ -37,31 +38,31 @@ const Container = styled.div`
 
 const WeatherApp = () => {
   console.log('invoke function component')
-  const [Temperature] = useWeatherApi();
-  const {FindLocation, render} = useWeatherSetting();
+  const [WeatherElement, LocationsList] = useWeatherApi();
+  const { FindLocation, render } = useWeatherSetting();
   //const [currentWeather, setCurrentWeather] = useState({})
 
   /* const [currentTheme, setCurrentTheme] = useState('light'); */
 
- /*  useEffect(() => {
-    console.log('Theme changed');
-    changeTheme();
-  },currentTheme);
-
-  const changeTheme = (() => {
-    if(currentTheme === 'light'){
-      setCurrentTheme('dark');
-    }
-    if(currentTheme === 'dark'){
-      setCurrentTheme('light');
-    }
-  }); */
+  /*  useEffect(() => {
+     console.log('Theme changed');
+     changeTheme();
+   },currentTheme);
+ 
+   const changeTheme = (() => {
+     if(currentTheme === 'light'){
+       setCurrentTheme('dark');
+     }
+     if(currentTheme === 'dark'){
+       setCurrentTheme('light');
+     }
+   }); */
 
   return (
     <ThemeProvider theme={theme.light}>
+      {render}
       <Container>
-        {render}
-        <WeatherCard FindLocation={FindLocation}/> 
+        <WeatherCard FindLocation={FindLocation} WeatherElement={WeatherElement} />
       </Container>
     </ThemeProvider>
   );
