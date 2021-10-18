@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import useWeatherApi from './useWeatherApi';
-import WeatherCard from './WeatherCard';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const WeatherSettingWrapper = styled.div`
   position: relative;
@@ -10,11 +11,11 @@ const WeatherSettingWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.boxShadow};
   background-color: ${({ theme }) => theme.foregroundColor};
   box-sizing: border-box;
-  padding: 20px;
+  padding: 15px;
 `;
 
 const Title = styled.div`
-  font-size: 28px;
+  font-size: 24px;
   color: ${({ theme }) => theme.titleColor};
   margin-bottom: 30px;
 `;
@@ -91,21 +92,23 @@ const Save = styled.button`
 `;
 
 const useWeatherSetting = () => {
-  //const [WeatherElement] = useWeatherApi();
-  const [LocationsList] = useWeatherApi();
+  const [WeatherElement, LocationsList] = useWeatherApi();
   const locations = LocationsList.locations;
-  //const setFindLocation = props.FindLocation;
   const [FindLocation, setFindLocation] = useState({
     place: '沙田',
     value: '0',
     unit: 'C',
   });
 
-  const findLocation = (e) => {
-    console.log(e.target.value);
-    const locationElement = locations.find((element) => {
-      return element.place === e.target.value;
-    });
+  const findLocation = (event, value) => {
+    console.log('value');
+    console.log(value); // should be return an object
+    if (value != null) {
+      var locationElement = locations.find((element) => {
+        return element.place === value.place;
+      });
+    }
+
     console.log(locationElement);
     if (locationElement != undefined) {
       setFindLocation({
@@ -123,18 +126,24 @@ const useWeatherSetting = () => {
     render: (
       <WeatherSettingWrapper>
         <Title>設定</Title>
-        <StyledLabel htmlFor="location">地區</StyledLabel>
-        <StyledInputList list="location-list" id="location" name="location" onChange={findLocation} />
-        <datalist id="location-list">
-          {/* 定義 datalist 中的 options*/}
+
+        <Autocomplete
+          id="location-list"
+          options={locations}
+          getOptionLabel={(option) => option.place}
+          style={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="地區" variant="outlined" />}
+          onChange={findLocation}
+        />
+        {<datalist id="location-list">
           {locations.map((location, i) => (
             <option key={i} value={location.place} />
           ))}
-        </datalist>
-        <ButtonGroup>
+        </datalist>}
+        {/* <ButtonGroup>
           <Back>返回</Back>
           <Save>儲存</Save>
-        </ButtonGroup>
+        </ButtonGroup> */}
       </WeatherSettingWrapper>
     )
   };
