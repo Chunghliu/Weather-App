@@ -4,17 +4,16 @@ import { ReactComponent as CogIcon } from '../Images/cog.svg';
 
 // STEP 1：在參數中帶入 props 即可取得外層組件傳入的資料
 const WeatherCard = (props) => {
-    /* const {
+    const {
         lastUpdateTime,
-        description,
+        warningMsg,
         humidity,
         icon,
         isLoading,
-    } = WeatherElement; */
+    } = props.WeatherElement;
     console.log('props.result');
     const {place, value, unit} = props.FindLocation;
-    //const { place, value, unit } = props;
-    //console.log(place + value + unit);
+    //const { weatherElement } = props.WeatherElement;
 
     // STEP 2：定義帶有 styled 的 component
     const WeatherCardWrapper = styled.div`
@@ -90,12 +89,13 @@ const WeatherCard = (props) => {
         <WeatherCardWrapper>
             <Cog />
             <Location>{place}</Location>
+            <Description>{warningMsg}</Description>
             < CurrentWeather >
                 <Temperature>
                     {value} <Celsius>°{unit}</Celsius>
                 </Temperature>
+            {<Icon><img src={icon} alt="Icon" /></Icon>}
             </CurrentWeather>
-            {/* <Icon><img src={WeatherElement.icon} alt="Icon" /></Icon> */}
         </WeatherCardWrapper >
     );
 };
