@@ -9,11 +9,8 @@ const useWeatherApi = () => {
                 console.log(res);
                 setWeatherElement({
                     lastUpdateTime: res.recordTime,
-                    description: res.specialWxTips,
-                    /* place: res.temperature.data[0].place,
-                    temperature: res.temperature.data[0].value,
-                    tempUnit: res.temperature.data[0].unit, */
-                    humidity: res.humidity.recordTime,
+                    warningMsg: res.warningMessage,
+                    humidity: res.humidity.data[0].value,
                     icon: 'https://www.hko.gov.hk/images/HKOWxIconOutline/pic' + res.icon + '.png',
                     isLoading: false,
                 })
@@ -28,11 +25,12 @@ const useWeatherApi = () => {
 
     const [WeatherElement, setWeatherElement] = useState({
         lastUpdateTime: '2021-10-04 16:15:00',
-        description: '天氣酷熱',
+        warningMsg: '天氣酷熱',
         humidity: 70,
         icon: '',
         isLoading: true,
     });
+
     const [LocationsList, setLocationList] = useState({
         locations: [],
     });
@@ -45,7 +43,7 @@ const useWeatherApi = () => {
         getWeather();
     }, []);
 
-    return [LocationsList];
+    return [WeatherElement, LocationsList];
 };
 
 export default useWeatherApi;
