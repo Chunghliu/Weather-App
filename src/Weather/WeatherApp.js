@@ -5,7 +5,6 @@ import { ThemeProvider } from '@emotion/react'
 import WeatherCard from './WeatherCard';
 import useWeatherApi from './useWeatherApi';
 import useWeatherSetting from './WeatherSetting';
-import ButtonTest from './ButtonTest';
 
 //定義主題配色
 const theme = {
