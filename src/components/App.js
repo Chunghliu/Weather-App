@@ -1,10 +1,12 @@
 import { Container } from 'react-bootstrap';
 import { AuthProvider } from '../contexts/AuthContext';
-//import WeatherAPI from '../Weather/WeatherApp';
+import WeatherAPI from '../Weather/WeatherApp';
 import Signup from "./Signup";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Dashboard from "./Dashboard"
 import Login from './Login';
+import PrivateRoute from './PrivateRoute';
+import ForgotPassword from './ForgotPassword';
 
 function App() {
   return (
@@ -16,12 +18,13 @@ function App() {
         <Router>
           <AuthProvider>
             <Switch>
-              <Route exact path="/" component={Dashboard}/>
+              <PrivateRoute exact path="/" component={Dashboard}/>
+              <PrivateRoute exact path="/weatherData" component={WeatherAPI}/>
               <Route path="/signup" component={Signup}/>
               <Route path="/login" component={Login}/>
+              <Route path="/forgot-password" component={ForgotPassword}/>
             </Switch>
           </AuthProvider>
-        <Signup />
         </Router>
       </div>
     </Container>
