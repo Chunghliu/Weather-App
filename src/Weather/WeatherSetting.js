@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import useWeatherApi from './useWeatherApi';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const WeatherSettingWrapper = styled.div`
   position: relative;
@@ -110,7 +110,7 @@ const useWeatherSetting = () => {
     }
 
     console.log(locationElement);
-    if (locationElement != undefined) {
+    if (locationElement !== undefined) {
       setFindLocation({
         place: locationElement.place,
         value: locationElement.value,
