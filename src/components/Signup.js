@@ -1,4 +1,8 @@
-import { Form, Button, Card, Alert } from 'react-bootstrap'
+import {
+    Alert, Avatar, Card, CardContent,
+    Button, TextField, Box, Typography, Grid
+} from '@mui/material'
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import React, { useState, useRef } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
@@ -34,31 +38,70 @@ export default function Signup() {
     return (
         <>
             <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Sign Up</h2>
-                    {error && <Alert variant="danger">{error}</Alert>}
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" ref={emailRef} required />
-                        </Form.Group>
-                        <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" ref={passwordRef} required />
-                        </Form.Group>
-                        <Form.Group id="password-confirm">
-                            <Form.Label>Confirmation</Form.Label>
-                            <Form.Control type="password" ref={passwordConfirmRef} required />
-                        </Form.Group>
-                        <Button disabled={loading} className="w-100" type="submit">
-                            Sign Up
-                        </Button>
-                    </Form>
-                </Card.Body>
+                <CardContent maxWidth="xs">
+                    <Box
+                        sx={{
+                            marginTop: 2,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                            <PersonOutlinedIcon />
+                        </Avatar>
+                        <Typography component="h1" variant="h5">
+                            Sign In
+                        </Typography>
+                        {error && <Alert variant="danger">{error}</Alert>}
+                        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Email Address"
+                                name="emailRef"
+                                autoComplete="emailRef"
+                                autoFocus
+                                inputRef={emailRef}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="passwordRef"
+                                autoComplete="current-password"
+                                inputRef={passwordRef}
+                            />
+                            <TextField
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="passwordConfirm"
+                                label="Confirmation"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                inputRef={passwordConfirmRef}
+                            />
+                            <Button
+                                disabled={loading}
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }} type="submit">
+                                Sign Up
+                            </Button>
+                            <Grid item>
+                                Already have an account? <Link to="/login"> Log In </Link>
+                            </Grid>
+                        </Box>
+                    </Box>
+                </CardContent>
             </Card>
-            <div className="w-100 text-center mt-2">
-                Already have an account? <Link to="/login"> Log In </Link>
-            </div>
         </>
     )
 }
